@@ -26,12 +26,12 @@ public class servlet1 extends HttpServlet {
 //					{
 //						System.out.println(rc.getString("name"));
 //					}
-					PreparedStatement pre =con.prepareStatement("insert into user values (? ,? ,?)");
-					pre.setString(1, "a");
-					pre.setString(2, "a@gmail.com");
-					pre.setString(3, "a");
-					pre.executeUpdate();pre.close();
-					con.close();
+//					PreparedStatement pre =con.prepareStatement("insert into user values (? ,? ,?)");
+//					pre.setString(1, "a");
+//					pre.setString(2, "a@gmail.com");
+//					pre.setString(3, "a");
+//					pre.executeUpdate();pre.close();
+//					con.close();
 					
 				}else {
 					System.out.println("khawi");
