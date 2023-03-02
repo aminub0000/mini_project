@@ -12,8 +12,47 @@
 
 <!-- Main css -->
 <link rel="stylesheet" href="css/style.css">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
+
+<%
+  String message = (String) request.getAttribute("message");
+  String[] tab = new String[]{"DUPLICAT", "SAME_PASS", "OBLIGATORY"};
+  if (message != null) {
+  if (message.equals(tab[0])) {
+%>
+<script>
+swal({
+	  title: "Username or email has already been used.",
+	  icon: "info",
+	  button: "OK!",
+	});
+</script>
+<%
+  } else if (message.equals(tab[1])) {
+%>
+<script>
+swal({
+	  title: "You should use the same password",
+	  icon: "info",
+	  button: "OK!",
+	});
+</script>
+<%
+  } else if (message.equals(tab[2])) {
+%>
+<script>
+swal({
+	  title: "You must fill in all necessary fields.",
+	  icon: "info",
+	  button: "OK!",
+	});
+</script>
+<%
+  }}
+%>
+
 <div><%request.getAttribute("username");%></div>
 	<div class="main">
 
@@ -24,7 +63,7 @@
 					<div class="signup-form">
 						<h2 class="form-title">Sign up</h2>
 					
-						<form method="get" action="myPr" class="register-form"
+						<form method="get" action="Registre" class="register-form"
 							id="register-form">
 							<div class="form-group">
 								<label for="name"><i
@@ -43,11 +82,6 @@
 								<label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
 								<input type="password" name="re_pass" id="re_pass"
 									placeholder="Repeat your password" />
-							</div>
-							<div class="form-group">
-								<label for="contact"><i class="zmdi zmdi-lock-outline"></i></label>
-								<input type="text" name="contact" id="contact"
-									placeholder="Contact no" />
 							</div>
 							<div class="form-group">
 								<input type="checkbox" name="agree-term" id="agree-term"
@@ -75,6 +109,8 @@
 
 
 	</div>
+	
+	
 	<!-- JS -->
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="js/main.js"></script>

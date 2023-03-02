@@ -14,7 +14,33 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<div class="main">
+
+<%
+  String nameL = (String) request.getAttribute("nameL");
+  String passL = (String) request.getAttribute("passL");
+ 
+
+  if (nameL == null || passL == null) {
+	  passL = nameL = "";
+  }
+  
+  String message = (String) request.getAttribute("message");
+  if (message != null) {
+  if (message.equals("SUCCESS")) {
+%>
+<script>
+swal({
+	  title: "Account successfully created!",
+	  icon: "success",
+	  button: "OK!",
+	});
+</script>
+<%
+  }}
+%>
+
+
+<div class="main">
 
 		<section class="sign-in">
 			<div class="container">
@@ -34,13 +60,13 @@
 						<form method="get" action="login_page" class="register-form" id="login-form">
 							<div class="form-group">
 								<label for="username"><i
-									class="zmdi zmdi-account material-icons-name"></i></label><input
-									type="text" name="username" id="username"
+									class="zmdi zmdi-account material-icons-name"></i></label>
+									<input type="text" name="username" id="username" value="<%= nameL %>"
 									placeholder="Entrer votre email" />
 							</div>
 							<div class="form-group">
 								<label for="password"><i class="zmdi zmdi-lock"></i></label> <input
-									type="password" name="password" id="password"
+									type="password" name="password" id="password" value="<%= passL %>"
 									placeholder="Entrer votre mot de passe" />
 							</div>
 							<div class="form-group">
@@ -79,5 +105,4 @@
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="js/main.js"></script>
 </body>
-<!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
